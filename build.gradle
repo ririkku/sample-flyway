@@ -29,13 +29,23 @@ test {
     useJUnitPlatform()
 }
 
-def myenv = System.env['GRADLE_ENV'] ?: 'develop'
-System.out.println(myenv)
-
 flyway {
-    url = 'jdbc:mysql://localhost:3306/test_database'
-    user = 'docker'
-    password = 'docker'
+    def profile = ''
+    if (System.properties.containsKey('spring.profiles.active')) {
+        profile = System.properties['spring.profiles.active']
+    }
+
+    if(profile == 'local') {
+        url = 'jdbc:mysql://localhost:3306/test_database'
+        user = 'docker'
+        password = 'docker'
+    }
+    if(profile == 'develop') {
+        url = 'jdbc:mysql://localhost:3306/test_database'
+        user = 'develop'
+        password = 'develop'
+    }
+
     baselineVersion = 3
     baselineOnMigrate = true
 }
