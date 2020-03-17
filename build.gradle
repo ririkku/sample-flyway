@@ -14,8 +14,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
-//    implementation 'org.flywaydb:flyway-core'
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.flywaydb:flyway-core:6.3.1')
 
     runtimeOnly('mysql:mysql-connector-java:8.0.19')
 
@@ -29,8 +29,13 @@ test {
     useJUnitPlatform()
 }
 
+def myenv = System.env['GRADLE_ENV'] ?: 'develop'
+System.out.println(myenv)
+
 flyway {
     url = 'jdbc:mysql://localhost:3306/test_database'
     user = 'docker'
     password = 'docker'
+    baselineVersion = 3
+    baselineOnMigrate = true
 }
