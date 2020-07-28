@@ -18,34 +18,34 @@ services:
     ports:
       - 3306:3306
 
-  # MySQL-Staging
-  db-staging:
-    image: mysql:5.7
-    container_name: db-staging
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: staging_database
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
-      TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./docker/my.cnf:/etc/mysql/conf.d/my.cnf
-    ports:
-      - 3307:3307
-
-  # MySQL-Production
-  db-production:
-    image: mysql:5.7
-    container_name: db-production
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: production_database
-      MYSQL_USER: docker
-      MYSQL_PASSWORD: docker
-      TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    volumes:
-      - ./docker/my.cnf:/etc/mysql/conf.d/my.cnf
-    ports:
-      - 3308:3308
+#  # MySQL-Staging
+#  db-staging:
+#    image: mysql:5.7
+#    container_name: db-staging
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: staging_database
+#      MYSQL_USER: docker
+#      MYSQL_PASSWORD: docker
+#      TZ: 'Asia/Tokyo'
+#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+#    volumes:
+#      - ./docker/my.cnf:/etc/mysql/conf.d/my.cnf
+#    ports:
+#      - 3307:3307
+#
+#  # MySQL-Production
+#  db-production:
+#    image: mysql:5.7
+#    container_name: db-production
+#    environment:
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_DATABASE: production_database
+#      MYSQL_USER: docker
+#      MYSQL_PASSWORD: docker
+#      TZ: 'Asia/Tokyo'
+#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+#    volumes:
+#      - ./docker/my.cnf:/etc/mysql/conf.d/my.cnf
+#    ports:
+#      - 3308:3308
